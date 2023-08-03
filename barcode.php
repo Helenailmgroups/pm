@@ -17,13 +17,12 @@ include "connection.php";
         <!-- PHP CODE FETCH DATA FROM DB -->
         <?php
             $con = new mysqli('localhost','root','','pm1');
-            // $query = $con->query("SELECT month, total FROM sales");                 
+            $query = $con->query("SELECT employee_name FROM employee");                 
 
-            // foreach($query as $data)
-            // {
-            //     $month[] = $data['month'];
-            //     $total[] = $data['total'];  
-            // }
+            foreach($query as $data)
+            {
+                 employee_name[] = $data['employee_name'];
+            }
             
             $sql = "SELECT * FROM employee ORDER BY staff_id ASC";                                 
             $result = $conn -> query($sql);
@@ -76,7 +75,7 @@ include "connection.php";
     <script>
         Chart.register(ChartjsPluginStacked100.default); //untuk stack100bar
     // setup 
-        const labels = <?php echo json_encode($month) ?>;
+        const labels = <?php echo json_encode($employee_name) ?>;
         const data = {
         labels: labels,
         datasets: [{
